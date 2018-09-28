@@ -11,7 +11,7 @@ import UIKit
 open class SideMenuTransition: UIPercentDrivenInteractiveTransition {
     
     fileprivate var presenting = false
-    fileprivate var interactive = false
+    open var interactive = false
     fileprivate weak var originalSuperview: UIView?
     fileprivate weak var activeGesture: UIGestureRecognizer?
     fileprivate var switchMenus = false {
@@ -30,15 +30,15 @@ open class SideMenuTransition: UIPercentDrivenInteractiveTransition {
             return sideMenuManager.menuWidth
         }
     }
-    internal weak var sideMenuManager: SideMenuManager!
-    internal weak var mainViewController: UIViewController?
-    internal weak var menuViewController: UISideMenuNavigationController? {
+    open weak var sideMenuManager: SideMenuManager!
+    open weak var mainViewController: UIViewController?
+    open weak var menuViewController: UISideMenuNavigationController? {
         get {
             return presentDirection == .left ? sideMenuManager.menuLeftNavigationController : sideMenuManager.menuRightNavigationController
         }
     }
     internal var presentDirection: UIRectEdge = .left
-    internal weak var tapView: UIView? {
+    open weak var tapView: UIView? {
         didSet {
             guard let tapView = tapView else {
                 return
@@ -214,7 +214,7 @@ open class SideMenuTransition: UIPercentDrivenInteractiveTransition {
         menuViewController?.dismiss(animated: true, completion: nil)
     }
     
-    @discardableResult internal func hideMenuStart() -> SideMenuTransition {
+    @discardableResult open func hideMenuStart() -> SideMenuTransition {
         guard let menuView = menuViewController?.view,
             let mainView = mainViewController?.view else {
                 return self

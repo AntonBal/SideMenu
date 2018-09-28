@@ -141,7 +141,7 @@ open class SideMenuManager : NSObject {
         }
     }
     
-    internal var transition: SideMenuTransition!
+    open var transition: SideMenuTransition!
     
     public override init() {
         super.init()
